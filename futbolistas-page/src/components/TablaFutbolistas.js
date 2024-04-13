@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function TablaFutbolistas({ futbolistas }) {
+
+    const mostrarDetalle = (futbolista) => {
+        const detalle = `
+            ID: ${futbolista.id}
+            Nombres: ${futbolista.nombres}
+            Apellidos: ${futbolista.apellidos}
+            Fecha de Nacimiento: ${futbolista.fechaNacimiento}
+            Características: ${futbolista.caracteristicas}
+            Posición: ${futbolista.posicion.nombre}
+        `;
+        alert(detalle);
+    };
+
     return (
-        <table>
-            <thead>
+        <table className="table">
+            <thead className="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nombres</th>
@@ -23,7 +37,7 @@ function TablaFutbolistas({ futbolistas }) {
                         <td>{futbolista.fechaNacimiento}</td>
                         <td>{futbolista.caracteristicas}</td>
                         <td>{futbolista.posicion.nombre}</td>
-                        <td></td>
+                        <td><button className="btn btn-primary" onClick={() => mostrarDetalle(futbolista)}>Detalle</button></td>
                     </tr>
                 ))}
             </tbody>
